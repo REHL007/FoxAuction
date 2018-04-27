@@ -1,48 +1,93 @@
 package com.ssm.model;
 
 public class User {
-    private Integer id;
+    private String userid;
 
-    private String userName;
+    private String userpwd;
 
-    private String password;
+    private String username;
 
-    private Integer age;
+    private String idcard;
 
-    public Integer getId() {
-        return id;
+    private String city;
+
+    private String address;
+
+    private String telephone;
+
+    private String zip;
+
+    private String email;
+
+    public String getUserid() {
+        return userid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUserpwd() {
+        return userpwd;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+    public void setUserpwd(String userpwd) {
+        this.userpwd = userpwd == null ? null : userpwd.trim();
     }
 
-    public String getPassword() {
-        return password;
+    public String getUsername() {
+        return username;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
-    public Integer getAge() {
-        return age;
+    public String getIdcard() {
+        return idcard;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setIdcard(String idcard) {
+        this.idcard = idcard == null ? null : idcard.trim();
     }
-    @Override
-    public String toString(){
-        return "User [id=" + id + ", userName=" + userName + ", password="
-                + password + ", age=" + age + "]";
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city == null ? null : city.trim();
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone == null ? null : telephone.trim();
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip == null ? null : zip.trim();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
     }
 }

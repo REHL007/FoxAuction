@@ -1,82 +1,139 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ssm.dao.IUserDao" >
+<mapper namespace="com.ssm.dao.UserDao" >
   <resultMap id="BaseResultMap" type="com.ssm.model.User" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="age" property="age" jdbcType="INTEGER" />
+    <id column="userid" property="userid" jdbcType="CHAR" />
+    <result column="userpwd" property="userpwd" jdbcType="CHAR" />
+    <result column="username" property="username" jdbcType="CHAR" />
+    <result column="idcard" property="idcard" jdbcType="CHAR" />
+    <result column="city" property="city" jdbcType="CHAR" />
+    <result column="address" property="address" jdbcType="CHAR" />
+    <result column="telephone" property="telephone" jdbcType="CHAR" />
+    <result column="zip" property="zip" jdbcType="CHAR" />
+    <result column="email" property="email" jdbcType="CHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_name, password, age
+    userid, userpwd, username, idcard, city, address, telephone, zip, email
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from user_t
-    where id = #{id,jdbcType=INTEGER}
+    from users
+    where userid = #{userid,jdbcType=CHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from user_t
-    where id = #{id,jdbcType=INTEGER}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from users
+    where userid = #{userid,jdbcType=CHAR}
   </delete>
   <insert id="insert" parameterType="com.ssm.model.User" >
-    insert into user_t (id, user_name, password, 
-      age)
-    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{age,jdbcType=INTEGER})
+    insert into users (userid, userpwd, username, 
+      idcard, city, address, telephone, 
+      zip, email)
+    values (#{userid,jdbcType=CHAR}, #{userpwd,jdbcType=CHAR}, #{username,jdbcType=CHAR}, 
+      #{idcard,jdbcType=CHAR}, #{city,jdbcType=CHAR}, #{address,jdbcType=CHAR}, #{telephone,jdbcType=CHAR}, 
+      #{zip,jdbcType=CHAR}, #{email,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ssm.model.User" >
-    insert into user_t
+    insert into users
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
+      <if test="userid != null" >
+        userid,
       </if>
-      <if test="userName != null" >
-        user_name,
+      <if test="userpwd != null" >
+        userpwd,
       </if>
-      <if test="password != null" >
-        password,
+      <if test="username != null" >
+        username,
       </if>
-      <if test="age != null" >
-        age,
+      <if test="idcard != null" >
+        idcard,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="zip != null" >
+        zip,
+      </if>
+      <if test="email != null" >
+        email,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+      <if test="userid != null" >
+        #{userid,jdbcType=CHAR},
       </if>
-      <if test="userName != null" >
-        #{userName,jdbcType=VARCHAR},
+      <if test="userpwd != null" >
+        #{userpwd,jdbcType=CHAR},
       </if>
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
+      <if test="username != null" >
+        #{username,jdbcType=CHAR},
       </if>
-      <if test="age != null" >
-        #{age,jdbcType=INTEGER},
+      <if test="idcard != null" >
+        #{idcard,jdbcType=CHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=CHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=CHAR},
+      </if>
+      <if test="zip != null" >
+        #{zip,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.ssm.model.User" >
-    update user_t
+    update users
     <set >
-      <if test="userName != null" >
-        user_name = #{userName,jdbcType=VARCHAR},
+      <if test="userpwd != null" >
+        userpwd = #{userpwd,jdbcType=CHAR},
       </if>
-      <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
+      <if test="username != null" >
+        username = #{username,jdbcType=CHAR},
       </if>
-      <if test="age != null" >
-        age = #{age,jdbcType=INTEGER},
+      <if test="idcard != null" >
+        idcard = #{idcard,jdbcType=CHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=CHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=CHAR},
+      </if>
+      <if test="zip != null" >
+        zip = #{zip,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=CHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where userid = #{userid,jdbcType=CHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ssm.model.User" >
-    update user_t
-    set user_name = #{userName,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      age = #{age,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    update users
+    set userpwd = #{userpwd,jdbcType=CHAR},
+      username = #{username,jdbcType=CHAR},
+      idcard = #{idcard,jdbcType=CHAR},
+      city = #{city,jdbcType=CHAR},
+      address = #{address,jdbcType=CHAR},
+      telephone = #{telephone,jdbcType=CHAR},
+      zip = #{zip,jdbcType=CHAR},
+      email = #{email,jdbcType=CHAR}
+    where userid = #{userid,jdbcType=CHAR}
   </update>
 </mapper>
