@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.dao.AuctionsDao" >
+  <resultMap id="BaseResultMap" type="com.ssm.model.Auctions" >
+    <id column="aucid" property="aucid" jdbcType="INTEGER" />
+    <result column="isend" property="isend" jdbcType="BIT" />
+    <result column="clsid" property="clsid" jdbcType="INTEGER" />
+    <result column="ownerid" property="ownerid" jdbcType="CHAR" />
+    <result column="aucname" property="aucname" jdbcType="CHAR" />
+    <result column="aucdetail" property="aucdetail" jdbcType="CHAR" />
+    <result column="imageurl" property="imageurl" jdbcType="CHAR" />
+    <result column="starttime" property="starttime" jdbcType="TIMESTAMP" />
+    <result column="closetime" property="closetime" jdbcType="TIMESTAMP" />
+    <result column="auctype" property="auctype" jdbcType="REAL" />
+    <result column="increment" property="increment" jdbcType="REAL" />
+    <result column="currentprice" property="currentprice" jdbcType="REAL" />
+    <result column="currentbidder" property="currentbidder" jdbcType="CHAR" />
+    <result column="oldnew" property="oldnew" jdbcType="CHAR" />
+    <result column="invoice" property="invoice" jdbcType="CHAR" />
+    <result column="repaired" property="repaired" jdbcType="CHAR" />
+    <result column="paymode" property="paymode" jdbcType="CHAR" />
+    <result column="carriage" property="carriage" jdbcType="CHAR" />
+    <result column="bidtimes" property="bidtimes" jdbcType="CHAR" />
+    <result column="clicktimes" property="clicktimes" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    aucid, isend, clsid, ownerid, aucname, aucdetail, imageurl, starttime, closetime, 
+    auctype, increment, currentprice, currentbidder, oldnew, invoice, repaired, paymode, 
+    carriage, bidtimes, clicktimes
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from auctions
+    where aucid = #{aucid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from auctions
+    where aucid = #{aucid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ssm.model.Auctions" >
+    insert into auctions (aucid, isend, clsid, 
+      ownerid, aucname, aucdetail, 
+      imageurl, starttime, closetime, 
+      auctype, increment, currentprice, 
+      currentbidder, oldnew, invoice, 
+      repaired, paymode, carriage, 
+      bidtimes, clicktimes)
+    values (#{aucid,jdbcType=INTEGER}, #{isend,jdbcType=BIT}, #{clsid,jdbcType=INTEGER}, 
+      #{ownerid,jdbcType=CHAR}, #{aucname,jdbcType=CHAR}, #{aucdetail,jdbcType=CHAR}, 
+      #{imageurl,jdbcType=CHAR}, #{starttime,jdbcType=TIMESTAMP}, #{closetime,jdbcType=TIMESTAMP}, 
+      #{auctype,jdbcType=REAL}, #{increment,jdbcType=REAL}, #{currentprice,jdbcType=REAL}, 
+      #{currentbidder,jdbcType=CHAR}, #{oldnew,jdbcType=CHAR}, #{invoice,jdbcType=CHAR}, 
+      #{repaired,jdbcType=CHAR}, #{paymode,jdbcType=CHAR}, #{carriage,jdbcType=CHAR}, 
+      #{bidtimes,jdbcType=CHAR}, #{clicktimes,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ssm.model.Auctions" >
+    insert into auctions
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aucid != null" >
+        aucid,
+      </if>
+      <if test="isend != null" >
+        isend,
+      </if>
+      <if test="clsid != null" >
+        clsid,
+      </if>
+      <if test="ownerid != null" >
+        ownerid,
+      </if>
+      <if test="aucname != null" >
+        aucname,
+      </if>
+      <if test="aucdetail != null" >
+        aucdetail,
+      </if>
+      <if test="imageurl != null" >
+        imageurl,
+      </if>
+      <if test="starttime != null" >
+        starttime,
+      </if>
+      <if test="closetime != null" >
+        closetime,
+      </if>
+      <if test="auctype != null" >
+        auctype,
+      </if>
+      <if test="increment != null" >
+        increment,
+      </if>
+      <if test="currentprice != null" >
+        currentprice,
+      </if>
+      <if test="currentbidder != null" >
+        currentbidder,
+      </if>
+      <if test="oldnew != null" >
+        oldnew,
+      </if>
+      <if test="invoice != null" >
+        invoice,
+      </if>
+      <if test="repaired != null" >
+        repaired,
+      </if>
+      <if test="paymode != null" >
+        paymode,
+      </if>
+      <if test="carriage != null" >
+        carriage,
+      </if>
+      <if test="bidtimes != null" >
+        bidtimes,
+      </if>
+      <if test="clicktimes != null" >
+        clicktimes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aucid != null" >
+        #{aucid,jdbcType=INTEGER},
+      </if>
+      <if test="isend != null" >
+        #{isend,jdbcType=BIT},
+      </if>
+      <if test="clsid != null" >
+        #{clsid,jdbcType=INTEGER},
+      </if>
+      <if test="ownerid != null" >
+        #{ownerid,jdbcType=CHAR},
+      </if>
+      <if test="aucname != null" >
+        #{aucname,jdbcType=CHAR},
+      </if>
+      <if test="aucdetail != null" >
+        #{aucdetail,jdbcType=CHAR},
+      </if>
+      <if test="imageurl != null" >
+        #{imageurl,jdbcType=CHAR},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closetime != null" >
+        #{closetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auctype != null" >
+        #{auctype,jdbcType=REAL},
+      </if>
+      <if test="increment != null" >
+        #{increment,jdbcType=REAL},
+      </if>
+      <if test="currentprice != null" >
+        #{currentprice,jdbcType=REAL},
+      </if>
+      <if test="currentbidder != null" >
+        #{currentbidder,jdbcType=CHAR},
+      </if>
+      <if test="oldnew != null" >
+        #{oldnew,jdbcType=CHAR},
+      </if>
+      <if test="invoice != null" >
+        #{invoice,jdbcType=CHAR},
+      </if>
+      <if test="repaired != null" >
+        #{repaired,jdbcType=CHAR},
+      </if>
+      <if test="paymode != null" >
+        #{paymode,jdbcType=CHAR},
+      </if>
+      <if test="carriage != null" >
+        #{carriage,jdbcType=CHAR},
+      </if>
+      <if test="bidtimes != null" >
+        #{bidtimes,jdbcType=CHAR},
+      </if>
+      <if test="clicktimes != null" >
+        #{clicktimes,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ssm.model.Auctions" >
+    update auctions
+    <set >
+      <if test="isend != null" >
+        isend = #{isend,jdbcType=BIT},
+      </if>
+      <if test="clsid != null" >
+        clsid = #{clsid,jdbcType=INTEGER},
+      </if>
+      <if test="ownerid != null" >
+        ownerid = #{ownerid,jdbcType=CHAR},
+      </if>
+      <if test="aucname != null" >
+        aucname = #{aucname,jdbcType=CHAR},
+      </if>
+      <if test="aucdetail != null" >
+        aucdetail = #{aucdetail,jdbcType=CHAR},
+      </if>
+      <if test="imageurl != null" >
+        imageurl = #{imageurl,jdbcType=CHAR},
+      </if>
+      <if test="starttime != null" >
+        starttime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closetime != null" >
+        closetime = #{closetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auctype != null" >
+        auctype = #{auctype,jdbcType=REAL},
+      </if>
+      <if test="increment != null" >
+        increment = #{increment,jdbcType=REAL},
+      </if>
+      <if test="currentprice != null" >
+        currentprice = #{currentprice,jdbcType=REAL},
+      </if>
+      <if test="currentbidder != null" >
+        currentbidder = #{currentbidder,jdbcType=CHAR},
+      </if>
+      <if test="oldnew != null" >
+        oldnew = #{oldnew,jdbcType=CHAR},
+      </if>
+      <if test="invoice != null" >
+        invoice = #{invoice,jdbcType=CHAR},
+      </if>
+      <if test="repaired != null" >
+        repaired = #{repaired,jdbcType=CHAR},
+      </if>
+      <if test="paymode != null" >
+        paymode = #{paymode,jdbcType=CHAR},
+      </if>
+      <if test="carriage != null" >
+        carriage = #{carriage,jdbcType=CHAR},
+      </if>
+      <if test="bidtimes != null" >
+        bidtimes = #{bidtimes,jdbcType=CHAR},
+      </if>
+      <if test="clicktimes != null" >
+        clicktimes = #{clicktimes,jdbcType=CHAR},
+      </if>
+    </set>
+    where aucid = #{aucid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ssm.model.Auctions" >
+    update auctions
+    set isend = #{isend,jdbcType=BIT},
+      clsid = #{clsid,jdbcType=INTEGER},
+      ownerid = #{ownerid,jdbcType=CHAR},
+      aucname = #{aucname,jdbcType=CHAR},
+      aucdetail = #{aucdetail,jdbcType=CHAR},
+      imageurl = #{imageurl,jdbcType=CHAR},
+      starttime = #{starttime,jdbcType=TIMESTAMP},
+      closetime = #{closetime,jdbcType=TIMESTAMP},
+      auctype = #{auctype,jdbcType=REAL},
+      increment = #{increment,jdbcType=REAL},
+      currentprice = #{currentprice,jdbcType=REAL},
+      currentbidder = #{currentbidder,jdbcType=CHAR},
+      oldnew = #{oldnew,jdbcType=CHAR},
+      invoice = #{invoice,jdbcType=CHAR},
+      repaired = #{repaired,jdbcType=CHAR},
+      paymode = #{paymode,jdbcType=CHAR},
+      carriage = #{carriage,jdbcType=CHAR},
+      bidtimes = #{bidtimes,jdbcType=CHAR},
+      clicktimes = #{clicktimes,jdbcType=CHAR}
+    where aucid = #{aucid,jdbcType=INTEGER}
+  </update>
+</mapper>

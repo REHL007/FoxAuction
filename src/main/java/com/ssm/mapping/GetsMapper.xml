@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.dao.GetsDao" >
+  <resultMap id="BaseResultMap" type="com.ssm.model.Gets" >
+    <id column="getid" property="getid" jdbcType="INTEGER" />
+    <result column="getaucid" property="getaucid" jdbcType="INTEGER" />
+    <result column="getauctype" property="getauctype" jdbcType="CHAR" />
+    <result column="getprice" property="getprice" jdbcType="REAL" />
+    <result column="gettime" property="gettime" jdbcType="TIMESTAMP" />
+    <result column="sellerid" property="sellerid" jdbcType="CHAR" />
+    <result column="bidderid" property="bidderid" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    getid, getaucid, getauctype, getprice, gettime, sellerid, bidderid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from gets
+    where getid = #{getid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from gets
+    where getid = #{getid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ssm.model.Gets" >
+    insert into gets (getid, getaucid, getauctype, 
+      getprice, gettime, sellerid, 
+      bidderid)
+    values (#{getid,jdbcType=INTEGER}, #{getaucid,jdbcType=INTEGER}, #{getauctype,jdbcType=CHAR}, 
+      #{getprice,jdbcType=REAL}, #{gettime,jdbcType=TIMESTAMP}, #{sellerid,jdbcType=CHAR}, 
+      #{bidderid,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ssm.model.Gets" >
+    insert into gets
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="getid != null" >
+        getid,
+      </if>
+      <if test="getaucid != null" >
+        getaucid,
+      </if>
+      <if test="getauctype != null" >
+        getauctype,
+      </if>
+      <if test="getprice != null" >
+        getprice,
+      </if>
+      <if test="gettime != null" >
+        gettime,
+      </if>
+      <if test="sellerid != null" >
+        sellerid,
+      </if>
+      <if test="bidderid != null" >
+        bidderid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="getid != null" >
+        #{getid,jdbcType=INTEGER},
+      </if>
+      <if test="getaucid != null" >
+        #{getaucid,jdbcType=INTEGER},
+      </if>
+      <if test="getauctype != null" >
+        #{getauctype,jdbcType=CHAR},
+      </if>
+      <if test="getprice != null" >
+        #{getprice,jdbcType=REAL},
+      </if>
+      <if test="gettime != null" >
+        #{gettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sellerid != null" >
+        #{sellerid,jdbcType=CHAR},
+      </if>
+      <if test="bidderid != null" >
+        #{bidderid,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ssm.model.Gets" >
+    update gets
+    <set >
+      <if test="getaucid != null" >
+        getaucid = #{getaucid,jdbcType=INTEGER},
+      </if>
+      <if test="getauctype != null" >
+        getauctype = #{getauctype,jdbcType=CHAR},
+      </if>
+      <if test="getprice != null" >
+        getprice = #{getprice,jdbcType=REAL},
+      </if>
+      <if test="gettime != null" >
+        gettime = #{gettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sellerid != null" >
+        sellerid = #{sellerid,jdbcType=CHAR},
+      </if>
+      <if test="bidderid != null" >
+        bidderid = #{bidderid,jdbcType=CHAR},
+      </if>
+    </set>
+    where getid = #{getid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ssm.model.Gets" >
+    update gets
+    set getaucid = #{getaucid,jdbcType=INTEGER},
+      getauctype = #{getauctype,jdbcType=CHAR},
+      getprice = #{getprice,jdbcType=REAL},
+      gettime = #{gettime,jdbcType=TIMESTAMP},
+      sellerid = #{sellerid,jdbcType=CHAR},
+      bidderid = #{bidderid,jdbcType=CHAR}
+    where getid = #{getid,jdbcType=INTEGER}
+  </update>
+</mapper>

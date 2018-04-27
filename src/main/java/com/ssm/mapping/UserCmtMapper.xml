@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.dao.UserCmtDao" >
+  <resultMap id="BaseResultMap" type="com.ssm.model.UserCmt" >
+    <id column="cmtid" property="cmtid" jdbcType="INTEGER" />
+    <result column="goodsname" property="goodsname" jdbcType="CHAR" />
+    <result column="goodscmt" property="goodscmt" jdbcType="CHAR" />
+    <result column="userid" property="userid" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cmtid, goodsname, goodscmt, userid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from userscmt
+    where cmtid = #{cmtid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from userscmt
+    where cmtid = #{cmtid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ssm.model.UserCmt" >
+    insert into userscmt (cmtid, goodsname, goodscmt, 
+      userid)
+    values (#{cmtid,jdbcType=INTEGER}, #{goodsname,jdbcType=CHAR}, #{goodscmt,jdbcType=CHAR}, 
+      #{userid,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ssm.model.UserCmt" >
+    insert into userscmt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cmtid != null" >
+        cmtid,
+      </if>
+      <if test="goodsname != null" >
+        goodsname,
+      </if>
+      <if test="goodscmt != null" >
+        goodscmt,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cmtid != null" >
+        #{cmtid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsname != null" >
+        #{goodsname,jdbcType=CHAR},
+      </if>
+      <if test="goodscmt != null" >
+        #{goodscmt,jdbcType=CHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ssm.model.UserCmt" >
+    update userscmt
+    <set >
+      <if test="goodsname != null" >
+        goodsname = #{goodsname,jdbcType=CHAR},
+      </if>
+      <if test="goodscmt != null" >
+        goodscmt = #{goodscmt,jdbcType=CHAR},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=CHAR},
+      </if>
+    </set>
+    where cmtid = #{cmtid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ssm.model.UserCmt" >
+    update userscmt
+    set goodsname = #{goodsname,jdbcType=CHAR},
+      goodscmt = #{goodscmt,jdbcType=CHAR},
+      userid = #{userid,jdbcType=CHAR}
+    where cmtid = #{cmtid,jdbcType=INTEGER}
+  </update>
+</mapper>

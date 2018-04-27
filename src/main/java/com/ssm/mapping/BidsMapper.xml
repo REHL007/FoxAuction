@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.dao.BidsDao" >
+  <resultMap id="BaseResultMap" type="com.ssm.model.Bids" >
+    <id column="bidid" property="bidid" jdbcType="INTEGER" />
+    <result column="bidaucid" property="bidaucid" jdbcType="INTEGER" />
+    <result column="auctype" property="auctype" jdbcType="CHAR" />
+    <result column="bidprice" property="bidprice" jdbcType="REAL" />
+    <result column="bidtime" property="bidtime" jdbcType="TIMESTAMP" />
+    <result column="sellerid" property="sellerid" jdbcType="CHAR" />
+    <result column="bidderid" property="bidderid" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bidid, bidaucid, auctype, bidprice, bidtime, sellerid, bidderid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bids
+    where bidid = #{bidid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bids
+    where bidid = #{bidid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ssm.model.Bids" >
+    insert into bids (bidid, bidaucid, auctype, 
+      bidprice, bidtime, sellerid, 
+      bidderid)
+    values (#{bidid,jdbcType=INTEGER}, #{bidaucid,jdbcType=INTEGER}, #{auctype,jdbcType=CHAR}, 
+      #{bidprice,jdbcType=REAL}, #{bidtime,jdbcType=TIMESTAMP}, #{sellerid,jdbcType=CHAR}, 
+      #{bidderid,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ssm.model.Bids" >
+    insert into bids
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bidid != null" >
+        bidid,
+      </if>
+      <if test="bidaucid != null" >
+        bidaucid,
+      </if>
+      <if test="auctype != null" >
+        auctype,
+      </if>
+      <if test="bidprice != null" >
+        bidprice,
+      </if>
+      <if test="bidtime != null" >
+        bidtime,
+      </if>
+      <if test="sellerid != null" >
+        sellerid,
+      </if>
+      <if test="bidderid != null" >
+        bidderid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bidid != null" >
+        #{bidid,jdbcType=INTEGER},
+      </if>
+      <if test="bidaucid != null" >
+        #{bidaucid,jdbcType=INTEGER},
+      </if>
+      <if test="auctype != null" >
+        #{auctype,jdbcType=CHAR},
+      </if>
+      <if test="bidprice != null" >
+        #{bidprice,jdbcType=REAL},
+      </if>
+      <if test="bidtime != null" >
+        #{bidtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sellerid != null" >
+        #{sellerid,jdbcType=CHAR},
+      </if>
+      <if test="bidderid != null" >
+        #{bidderid,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ssm.model.Bids" >
+    update bids
+    <set >
+      <if test="bidaucid != null" >
+        bidaucid = #{bidaucid,jdbcType=INTEGER},
+      </if>
+      <if test="auctype != null" >
+        auctype = #{auctype,jdbcType=CHAR},
+      </if>
+      <if test="bidprice != null" >
+        bidprice = #{bidprice,jdbcType=REAL},
+      </if>
+      <if test="bidtime != null" >
+        bidtime = #{bidtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sellerid != null" >
+        sellerid = #{sellerid,jdbcType=CHAR},
+      </if>
+      <if test="bidderid != null" >
+        bidderid = #{bidderid,jdbcType=CHAR},
+      </if>
+    </set>
+    where bidid = #{bidid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ssm.model.Bids" >
+    update bids
+    set bidaucid = #{bidaucid,jdbcType=INTEGER},
+      auctype = #{auctype,jdbcType=CHAR},
+      bidprice = #{bidprice,jdbcType=REAL},
+      bidtime = #{bidtime,jdbcType=TIMESTAMP},
+      sellerid = #{sellerid,jdbcType=CHAR},
+      bidderid = #{bidderid,jdbcType=CHAR}
+    where bidid = #{bidid,jdbcType=INTEGER}
+  </update>
+</mapper>
